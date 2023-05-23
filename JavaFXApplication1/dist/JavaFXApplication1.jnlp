@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="JavaFXApplication1.jnlp">
+  <information>
+    <title>JavaFXApplication1</title>
+    <vendor>dudum</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lib\JavaFXApplication1-Preloader.jar" size="3164" download="progress" />
+    <jar href="JavaFXApplication1.jar" size="3018" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="javafxapplication1.Main"  name="JavaFXApplication1"  preloader-class="javafxapplication1.preloader.JavaFXApplication1_Preloader"/>
+  <update check="always"/>
+</jnlp>
