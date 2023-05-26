@@ -1,7 +1,5 @@
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Services;
+
 
 import Entities.Cliente;
 import Entities.Cuota;
@@ -13,7 +11,9 @@ import Enumeradores.TipoCobertura;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+
 import java.util.Scanner;
+
 
 
 /**
@@ -75,7 +75,8 @@ public class SeguroService {
 
     public Poliza generarPoliza(ArrayList<Cliente> clientesArray, ArrayList<Vehiculo> autoArray) throws ParseException {
 
-        ArrayList<Cuota> cuotaArray = new ArrayList();
+        
+         this.polizaNro = polizaNro + 1;
 
         System.out.println("Usted esta por generar la Poliza Nro. " + polizaNro);
         System.out.println("");
@@ -135,7 +136,8 @@ public class SeguroService {
         int pagoCon = validarEntero() - 1;
 
         FormaPago fp = FormaPago.values()[pagoCon];
-
+        ArrayList<Cuota> cuotaArray = new ArrayList();
+        
         for (int i = 0; i < cuotas; i++) {
             cuotaArray.add(generarCuota(prima, cuotas, polizaNro, fp, (i + 1), fechaInicio));
         }
@@ -143,7 +145,7 @@ public class SeguroService {
         System.out.println(cuotaArray);
         boolean vigente = true;
 
-        this.polizaNro = polizaNro + 1;
+       
 
         return new Poliza(auto, cliente, polizaNro, tc, montoAsegurado, prima, granizo, vigente, fechaInicio, fechaFin, cuotaArray, fp);
     }
@@ -311,13 +313,11 @@ public class SeguroService {
                         } else {
                             estado = "IMPAGO";
                         }
-                        System.out.printf("%-4s %-10d %-23d %-20.2f %-20s %-30s\n", polizaCliente.get(i).getAuto().getPatente(), polizaCliente.get(i).getNroPoliza(), polizaCliente.get(i).getCuotas().get(j).getNroCuota(), polizaCliente.get(i).getCuotas().get(j).getMontoCuota(), (polizaCliente.get(i).getCuotas().get(j).getVencimiento().getDate() + "/" + (polizaCliente.get(i).getCuotas().get(j).getVencimiento().getMonth()+1) + "/" + (polizaCliente.get(i).getCuotas().get(j).getVencimiento().getYear())+1900), estado);
+                        System.out.printf("%-4s %-10d %-23d %-20.2f %-20s %-30s\n", polizaCliente.get(i).getAuto().getPatente(), polizaCliente.get(i).getNroPoliza(), polizaCliente.get(i).getCuotas().get(j).getNroCuota(), polizaCliente.get(i).getCuotas().get(j).getMontoCuota(), (polizaCliente.get(i).getCuotas().get(j).getVencimiento().getDate() + "/" + (polizaCliente.get(i).getCuotas().get(j).getVencimiento().getMonth()+1) + "/" + (polizaCliente.get(i).getCuotas().get(j).getVencimiento().getYear()+1900)), estado);
                     }
                 }
-
             }
         }
-
     }
     
     private int validarEntero() {

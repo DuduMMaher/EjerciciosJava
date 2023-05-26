@@ -6,11 +6,18 @@ package Services;
 
 import Entities.Alumno;
 import Entities.Voto;
+import HacksDPackage.Servicios;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+
+
+
+
 
 /**
  *
@@ -19,28 +26,24 @@ import java.util.Scanner;
 public class Simulador {
 
     Scanner leer = new Scanner(System.in);
-
+    Servicios serv = new Servicios();
+    
+    
     public int generadorDni() {
 
-        Random randDni = new Random();
-        int dni;
-
-        do {
-            dni = randDni.nextInt(45000000);
-        } while (dni < 4000000);
-
-        return dni;
+       
+        return serv.generarDni();
     }
 
     public String ingresarAlumno() {
 
         System.out.print("Ingrese el Nombre: ");
-        String nombre = leer.next();
+        String nombre = serv.nombre();
         System.out.print("Ingrese el Apellido: ");
-        String apellido = leer.next();
+        String apellido = serv.apellido();
 
         String nombreCompleto = apellido + ", " + nombre;
-
+        
         return nombreCompleto;
 
     }
@@ -75,9 +78,7 @@ public class Simulador {
 
         for (int i = 0; i < 3; i++) {
             do {
-                
-                    votoRandom = voto.nextInt(rand);
-                
+                votoRandom = voto.nextInt(rand);
             } while (votoRandom == a || alumnoVotado.contains(aluArray.get(votoRandom)));
 
             alumnoVotado.add(aluArray.get(votoRandom));
@@ -88,18 +89,40 @@ public class Simulador {
 
     public void verVotaciones(ArrayList<Alumno> aluArray, ArrayList<Voto> votaciones) {
 
-        for (Alumno aux : aluArray) {
-            System.out.println(aux.getNombreCompleto() + "Votos: " + aux.getCantVotos());
-            System.out.println("Votados: ");
-            for (Voto aux2 : votaciones) {
-                if (aux2.getAlumno().equals(aux)) {
-                    for (int i = 0; i < aux2.getAlumnoVotado().size(); i++) {
-                        System.out.println(aux2.getAlumnoVotado().get(i).getNombreCompleto());
-                    }
-                }
+        for (Voto aux : votaciones) {
+            System.out.println(aux.getAlumno().getNombreCompleto() + " / " + aux.getAlumno().getCantVotos());
+            for (int i = 0; i < aux.getAlumnoVotado().size(); i++) {
+                System.out.println(aux.getAlumnoVotado().get(i).getNombreCompleto());
             }
-            System.out.println("");
+
         }
 
+    }
+
+    public void titularesSuplentes(ArrayList<Alumno> aluArray) {
+     
+        Collections.sort(aluArray, new Comparator<Alumno>() {
+            @Override
+            public int compare(Alumno o1, Alumno o2) {
+                Integer votos1 = o1.getCantVotos();
+                Integer votos2 = o2.getCantVotos();
+               return votos2.compareTo(votos1);
+            }
+        });
+    System.out.println("TITULARES");
+        for (int i = 0; i < 5; i++) {
+            
+            System.out.println(aluArray.get(i).getNombreCompleto() + " / " + aluArray.get(i).getCantVotos());
+            
+        }
+        System.out.println("");
+    System.out.println("SUPLENTES");
+    
+        for (int i = 5 ; i < 10; i++) {
+            System.out.println(aluArray.get(i).getNombreCompleto() + " / " + aluArray.get(i).getCantVotos());
+        }
+    
+    
+    
     }
 }

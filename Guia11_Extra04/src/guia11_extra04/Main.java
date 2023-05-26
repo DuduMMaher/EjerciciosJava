@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import Entities.Alumno;
 import Entities.Voto;
+import HacksDPackage.Servicios;
 import Services.Simulador;
 
 /**
@@ -22,12 +23,13 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        Servicios serv = new Servicios();
         Simulador sim = new Simulador();
         ArrayList<String> alumnoArray = new ArrayList();
         ArrayList<Integer> dniArray = new ArrayList();
         Scanner leer = new Scanner(System.in);
         ArrayList<Alumno> aluArray = new ArrayList();
-        ArrayList<Alumno> alumnoVotado = new ArrayList();
+        
         ArrayList<Voto> votaciones = new ArrayList();
 
         int opc;
@@ -41,10 +43,10 @@ public class Main {
             System.out.println("5.- Imprimir Listado Alumnos");
             System.out.println("6.- Generar votacion");
             System.out.println("7.- Ver Votaciones");
-            System.out.println("8.- ");
+            System.out.println("8.- Titulares y Suplentes");
             System.out.println("9.- Salir");
 
-            opc = leer.nextInt();
+            opc = serv.validarEntero();
 
             switch (opc) {
 
@@ -88,12 +90,18 @@ public class Main {
                     break;
                 case 6:
                     for (int i = 0; i < aluArray.size(); i++) {
+                        ArrayList<Alumno> alumnoVotado = new ArrayList();
                         votaciones.add(sim.votacion(aluArray, alumnoVotado, i));
                     }
                     
                     break;
                 case 7:
                     sim.verVotaciones(aluArray, votaciones);
+                    break;
+                case 8:
+                    sim.titularesSuplentes(aluArray);
+                    break;
+                    
 
             }
 
