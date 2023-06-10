@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Guia12_Extra04">
+  <ClassDiagramComponents>
+    <Class name="Empleado" package="Entities" visibility="public" xPosition="771.0" yPosition="45.0">
+      <Fields>
+        <Field name="anioInc" type="int" visibility="protected"/>
+        <Field name="numDesp" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="anioInc"/>
+          <Argument type="int" name="numDesp"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="estadoCivil"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAnioInc" returnType="int" visibility="public"/>
+        <Method name="setAnioInc" returnType="void" visibility="public">
+          <Argument type="int" name="anioInc"/>
+        </Method>
+        <Method name="getNumDesp" returnType="int" visibility="public"/>
+        <Method name="setNumDesp" returnType="void" visibility="public">
+          <Argument type="int" name="numDesp"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="cambioEstadoCivil" returnType="void" visibility="public"/>
+        <Method name="cambioDespacho" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Estudiante" package="Entities" visibility="public" xPosition="18.0" yPosition="477.0">
+      <Fields>
+        <Field name="cursoMat" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="cursoMat"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="estadoCivil"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCursoMat" returnType="String" visibility="public"/>
+        <Method name="setCursoMat" returnType="void" visibility="public">
+          <Argument type="String" name="cursoMat"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="cambioEstadoCivil" returnType="void" visibility="public"/>
+        <Method name="nuevaMat" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="Entities" visibility="public" xPosition="253.0" yPosition="45.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="protected"/>
+        <Field name="apellido" type="String" visibility="protected"/>
+        <Field name="dni" type="int" visibility="protected"/>
+        <Field name="estadoCivil" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="estadoCivil"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getDni" returnType="int" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="int" name="dni"/>
+        </Method>
+        <Method name="getEstadoCivil" returnType="String" visibility="public"/>
+        <Method name="setEstadoCivil" returnType="void" visibility="public">
+          <Argument type="String" name="estadoCivil"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="cambioEstadoCivil" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PersonalDeServicio" package="Entities" visibility="public" xPosition="867.0" yPosition="412.0">
+      <Fields>
+        <Field name="seccion" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="seccion"/>
+          <Argument type="int" name="anioInc"/>
+          <Argument type="int" name="numDesp"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="estadoCivil"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSeccion" returnType="String" visibility="public"/>
+        <Method name="setSeccion" returnType="void" visibility="public">
+          <Argument type="String" name="seccion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="cambioDespacho" returnType="void" visibility="public"/>
+        <Method name="cambioEstadoCivil" returnType="void" visibility="public"/>
+        <Method name="cambioDeSeccion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Profesor" package="Entities" visibility="public" xPosition="434.0" yPosition="554.0">
+      <Fields>
+        <Field name="departamento" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="departamento"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="estadoCivil"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDepartamento" returnType="String" visibility="public"/>
+        <Method name="setDepartamento" returnType="void" visibility="public">
+          <Argument type="String" name="departamento"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="cambioEstadoCivil" returnType="void" visibility="public"/>
+        <Method name="cambioDeDepartamento" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Main" package="guia12_extra04" visibility="public" xPosition="18.0" yPosition="82.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Entities.Profesor" target="Entities.Persona"/>
+    <IsRelation name="is" source="Entities.Estudiante" target="Entities.Persona"/>
+    <IsRelation name="is" source="Entities.PersonalDeServicio" target="Entities.Empleado"/>
+    <IsRelation name="is" source="Entities.Empleado" target="Entities.Persona"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

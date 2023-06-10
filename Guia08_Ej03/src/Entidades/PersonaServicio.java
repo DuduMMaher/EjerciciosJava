@@ -5,8 +5,11 @@
  */
 package Entidades;
 
+import Exceptions.OwnException;
+import HacksDPackage.Servicios;
 import Persona.Persona;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -15,21 +18,75 @@ import java.util.Scanner;
  */
 public class PersonaServicio {
 
-    Scanner leer = new Scanner(System.in);
+    Scanner leer = new Scanner(System.in).useDelimiter("\n");
+    Servicios serv = new Servicios();
 
-    public Persona crearPersona() {
+//    public String validarString() {
+//        String entrada = leer.next();
+//        while (entrada.isEmpty()) {
+//            System.out.print("Ingrese un valor válido.\n");
+//            entrada = leer.next();
+//        }
+//        return entrada;
+//    }
+    public Persona crearPersona() throws OwnException {
 
+        String nombre = "";
         System.out.print("Nombre: ");
-        String nombre = leer.next().toUpperCase();
-        System.out.print("Edad: ");
-        int edad = leer.nextInt();
+        do {
+            try {
+                nombre = leer.next().toUpperCase();
+                while (nombre.isEmpty()) {
+                    throw new OwnException("El campo esta vacio");
+                }
+                break;
+            } catch (OwnException a) {
+
+                System.out.println(a.getMessage());
+//            nombre = leer.next();
+            }
+        } while (true);
+        int edad = 0;
+        do {
+            try {
+                System.out.print("Edad: ");
+                edad = leer.nextInt();
+                if (edad > 110) {
+                    throw new OwnException("Edad incorrecta");
+                }
+                break;
+            } catch (OwnException b) {
+                System.out.println(b.getMessage());
+            }
+        } while (true);
+
         String sexo;
         do {
             System.out.print("Sexo: ");
             sexo = leer.next().toUpperCase();
         } while ((!"M".equals(sexo)) && (!"F".equals(sexo)) && (!"O".equals(sexo)));
-        System.out.print("Altura: ");
-        double altura = leer.nextDouble();
+
+        double altura=0;
+        do {
+            try {
+                System.out.print("Altura: ");
+                altura = leer.nextDouble();
+                if (altura == 0) {
+                    throw new OwnException("El campo esta vacio");
+                }
+                if (altura > 2.2) {
+                    throw new OwnException("Altura Incorrecta");
+                }
+                break;
+            } catch (OwnException c) {
+                System.out.println(c.getMessage());
+            } catch (InputMismatchException d) {
+                System.out.println("Usted no ingreso un numero 1 ");
+            } catch (NumberFormatException e) {
+                System.out.println("Usted no ingreso un numero 2 ");
+            }
+        } while (true);
+        
         System.out.print("Peso: ");
         double peso = leer.nextDouble();
 
@@ -71,30 +128,29 @@ public class PersonaServicio {
         System.out.println("Ingrese el nombre del persona de la que quiere saber");
         String nom = leer.next().toUpperCase();
 
-        
         for (int i = 0; i < buscarPrimerVacio(p); i++) {
-            
+
             if (p[i].getNombre().equals(nom)) {
 
                 return i;
             }
         }
 
-        return 101;   
+        return 101;
     }
-    public int buscarPrimerVacio(Persona[] p){
-     
-        int i=0;
+
+    public int buscarPrimerVacio(Persona[] p) {
+
+        int i = 0;
         while (p[i] != (null)) {
             i++;
-            if (i==99){
+            if (i == 99) {
                 break;
             }
-        }  
-        
+        }
+
         return i;
-        
+
     }
-    
-    
+
 }
