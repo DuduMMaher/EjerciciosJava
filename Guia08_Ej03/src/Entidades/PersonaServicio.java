@@ -29,7 +29,7 @@ public class PersonaServicio {
 //        }
 //        return entrada;
 //    }
-    public Persona crearPersona() throws OwnException {
+    public Persona crearPersona() throws OwnException, InputMismatchException {
 
         String nombre = "";
         System.out.print("Nombre: ");
@@ -57,7 +57,10 @@ public class PersonaServicio {
                 break;
             } catch (OwnException b) {
                 System.out.println(b.getMessage());
+            } catch (InputMismatchException a) {
+                System.out.println("Ingrese un numero valido");
             }
+            leer.nextLine();
         } while (true);
 
         String sexo;
@@ -66,7 +69,7 @@ public class PersonaServicio {
             sexo = leer.next().toUpperCase();
         } while ((!"M".equals(sexo)) && (!"F".equals(sexo)) && (!"O".equals(sexo)));
 
-        double altura=0;
+        double altura = 0;
         do {
             try {
                 System.out.print("Altura: ");
@@ -80,16 +83,29 @@ public class PersonaServicio {
                 break;
             } catch (OwnException c) {
                 System.out.println(c.getMessage());
-            } catch (InputMismatchException d) {
-                System.out.println("Usted no ingreso un numero 1 ");
-            } catch (NumberFormatException e) {
-                System.out.println("Usted no ingreso un numero 2 ");
+            } catch (InputMismatchException e) {
+                System.out.println("Usted no ingreso un numero valido");
+                leer.nextLine();
             }
         } while (true);
-        
-        System.out.print("Peso: ");
-        double peso = leer.nextDouble();
 
+        
+        double peso;
+        do {
+            try {
+                System.out.print("Peso: ");
+                peso = leer.nextDouble();
+                if (peso > 280) {
+                    throw new OwnException("Valor de peso incorrecto");
+                }
+                break;
+            } catch (OwnException a) {
+                System.out.println(a.getMessage());
+            } catch (InputMismatchException b) {
+                System.out.println("Ingrese un numero valido");
+                leer.nextLine();
+            }
+        } while (true);
         return new Persona(nombre, sexo, edad, peso, altura);
     }
 
